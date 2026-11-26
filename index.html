@@ -127,6 +127,21 @@ ul.check li::before{content:"✕";position:absolute;left:2px;top:12px;width:20px
 .builder label{font-size:13px;font-weight:700;color:var(--ink2)}
 #preview{white-space:pre-wrap;background:var(--paper2);border:1px solid var(--line);border-radius:10px;padding:18px;font-size:15px;line-height:1.8;min-height:200px;font-family:Georgia,serif}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;border:none;background:var(--ink);color:var(--paper);font-weight:700;font-size:15px;min-height:48px;cursor:pointer}
+/* builder: placeholders + per-sentence notes */
+.bgrid{display:grid;grid-template-columns:1fr;gap:0 20px}
+@media(min-width:820px){.bgrid{grid-template-columns:320px 1fr}}
+.phgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;margin:2px 0 14px}
+@media(min-width:820px){.phgrid{grid-template-columns:1fr 1fr 1fr}}
+.phgrid label{font-size:12px}
+.phgrid input{width:100%;min-height:40px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:14px;margin-top:2px}
+#preview{white-space:normal}
+.bs{margin:0}
+.bs.bp{margin-top:16px}
+.bt{display:block}
+.bn{display:block;font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:12px;color:var(--ink2);line-height:1.55;margin:2px 0 9px}
+.bn b{color:var(--ink)}
+.ph{background:var(--ink);color:var(--paper);padding:0 5px;border-radius:3px;font-weight:700;white-space:nowrap;font-size:.92em}
+.fv{font-weight:700;text-decoration:underline;text-underline-offset:3px}
 footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink2);font-size:13px}
 .intro{margin:22px 0 0}
 .intro h1{font-family:"Songti SC","STSong",Georgia,serif;font-size:28px;line-height:1.3;margin:0 0 6px;font-weight:900}
@@ -543,15 +558,17 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
 <div class="page" id="page-builder">
   <div class="sec-head"><h2>拼文练习</h2><p>选一选<br>骨架自动拼好</p></div>
   <div class="card builder">
+   <div class="bgrid">
+    <div>
     <label for="b-type">文体</label>
     <select id="b-type"><option value="letter">写信（题干没有 notice）</option><option value="notice">通知（题干有 notice）</option></select>
     <label for="b-purpose">主要目的</label>
     <select id="b-purpose">
-      <option value="offer you some information about the project">① 给信息 offer you some information about…</option>
-      <option value="offer you some suggestions on how to improve your translation">① 给建议 offer you some suggestions on…</option>
-      <option value="extend you an invitation to attend the debate">② 邀请 extend you an invitation to…</option>
-      <option value="recommend you a tourist attraction in my city: the Great Wall">③ 推荐 recommend you…（长城）</option>
-      <option value="answer your inquiry, specifying the details of the project">④ 照抄题干 answer your inquiry…（记得换人称）</option>
+      <option value="info">① 给信息 offer you some information about…</option>
+      <option value="sugg">① 给建议 offer you some suggestions on…</option>
+      <option value="invite">② 邀请 extend you an invitation to…</option>
+      <option value="recommend">③ 推荐 recommend you…</option>
+      <option value="inquiry">④ 照抄题干 answer your inquiry…（记得换人称）</option>
     </select>
     <label for="b-yuan">主体段用哪一元</label>
     <select id="b-yuan">
@@ -562,9 +579,27 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
     </select>
     <label for="b-tail">尾段</label>
     <select id="b-tail"><option value="no">① 不需要回信（信息有用就好）</option><option value="yes">② 需要回信（请认真考虑）</option></select>
+    <label>占位符 · 填了实时进范文，没填的留【】提醒你</label>
+    <div class="phgrid">
+      <div><label for="f-recip">收信人</label><input id="f-recip" type="text" placeholder="如 Jack"></div>
+      <div><label for="f-topic">主题</label><input id="f-topic" type="text" placeholder="题目在讲什么"></div>
+      <div><label for="f-event">活动名</label><input id="f-event" type="text" placeholder="要参加的活动"></div>
+      <div><label for="f-time">时间</label><input id="f-time" type="text" placeholder="如 next Sunday"></div>
+      <div><label for="f-place">地点</label><input id="f-place" type="text" placeholder="在哪举行"></div>
+      <div><label for="f-item">推荐/介绍对象</label><input id="f-item" type="text" placeholder="要推荐的东西"></div>
+      <div><label for="f-crowd">人群</label><input id="f-crowd" type="text" placeholder="如 students"></div>
+      <div><label for="f-people">出席人员</label><input id="f-people" type="text" placeholder="如 teachers"></div>
+      <div><label for="f-sign">署名</label><input id="f-sign" type="text" placeholder="没指定写 Li Ming"></div>
+      <div><label for="f-org">落款单位</label><input id="f-org" type="text" placeholder="如 Students' Union"></div>
+      <div><label for="f-date">日期</label><input id="f-date" type="text" placeholder="如 June 15, 2024"></div>
+    </div>
+    </div>
+    <div>
     <div id="preview" class="en"></div>
-    <p style="font-size:13px;color:var(--ink2)">占位处换成题目里的具体内容，就是一篇完整的约 100 词小作文。</p>
+    <p style="font-size:13px;color:var(--ink2)">黑底白字 = 还没填的占位符；每句下面的小字是这句的用法，照着填就不会错。</p>
     <button class="btn" id="b-copy">⧉ 复制全文</button> <span id="b-done" style="font-size:13.5px;font-weight:700"></span>
+    </div>
+   </div>
   </div>
 </div>
 
@@ -630,49 +665,135 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
       window.scrollTo(0,0);
     });
   });
-  // builder
+  // builder: placeholder-driven, live fill, per-sentence usage notes
+  var FIELDS={
+    recip:{label:'收信人',id:'f-recip'},
+    topic:{label:'主题',id:'f-topic'},
+    event:{label:'活动名',id:'f-event'},
+    time:{label:'时间',id:'f-time'},
+    place:{label:'地点',id:'f-place'},
+    item:{label:'推荐对象',id:'f-item'},
+    crowd:{label:'人群',id:'f-crowd'},
+    people:{label:'出席人员',id:'f-people'},
+    sign:{label:'署名',id:'f-sign'},
+    org:{label:'落款单位',id:'f-org'},
+    date:{label:'日期',id:'f-date'}
+  };
+  var curTailword='questions';
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function fval(key){
+    var f=FIELDS[key]; if(!f||!f.id) return '';
+    var el=document.getElementById(f.id); return el?el.value.trim():'';
+  }
+  function renderHTML(tpl){
+    return esc(tpl).replace(/\{(\w+)\}/g,function(m,k){
+      if(k==='tailword') return '<span class="fv">'+curTailword+'</span>';
+      var v=fval(k);
+      if(v) return '<span class="fv">'+esc(v)+'</span>';
+      return '<span class="ph">【'+FIELDS[k].label+'】</span>';
+    });
+  }
+  function renderText(tpl){
+    return tpl.replace(/\{(\w+)\}/g,function(m,k){
+      if(k==='tailword') return curTailword;
+      var v=fval(k);
+      return v? v : '【'+FIELDS[k].label+'】';
+    });
+  }
+  var PURPOSE={
+    info:{t:'offer you some information about {topic}',n:'<b>首段 · 说清来意。</b>information 不可数，永远不加 s；about 后填主题。'},
+    sugg:{t:'offer you some suggestions about {topic}',n:'<b>首段 · 说清来意。</b>suggestions 是「建议」，不止一条，要加 s；about 后填主题。'},
+    invite:{t:'extend you an invitation to attend {event}',n:'<b>首段 · 说清来意。</b>attend 后接活动名；活动名要用题目给的那个，别自己编。'},
+    recommend:{t:'recommend you {item}',n:'<b>首段 · 说清来意。</b>recommend you + 东西：先人后物；这里填你要推荐的东西。'},
+    inquiry:{t:'answer your inquiry about {topic}',n:'<b>首段 · 照抄题干式。</b>inquiry 是对方的询问；照抄题干时必须换人称：him → you、your → my。'}
+  };
+  var TAILWORD={info:'questions',sugg:'suggestions',invite:'invitation',recommend:'recommendation',inquiry:'questions'};
   var YUAN={
-    what:{topic:'the project',points:[
-      'it will be held in the Main Building next Sunday',
-      'our staff will be there to provide you with necessary orientation and guidance',
-      'it is highly recommended to be properly dressed for the occasion']},
-    why:{topic:'the Great Wall',points:[
-      'it has an official award from the United Nations',
-      'it enjoys widespread popularity among Chinese people',
-      'I personally find it interesting to climb the Great Wall']},
-    how:{topic:'translation',points:[
-      "it's advisable to put things into perspective and establish a correct value about translation primarily",
-      'you could look for advanced experiences in this aspect on Zhihu Community',
-      'a practical and reasonable study plan should be promptly carried out and remain high on your agenda']},
-    mix:{topic:'the debate',points:[
-      'Didi Taxi enjoys a widespread concern among the citizens',
-      'I personally find it attractive to debate over this topic',
-      'the debate will be held at the Main Building next Sunday and our staff will be there to provide you with necessary orientation']}
+    what:[
+      {t:'it will be held at {place} on {time}',n:'<b>第 1 点 · 时间地点。</b>at 后填地点（校内小地方用 at，大城市用 in），on 后填时间；held 可换 located，意思不变。'},
+      {t:'our {people} will be there to provide you with necessary guidance',n:'<b>第 2 点 · 出席人员。</b>按活动填：老师 teachers、志愿者 volunteers、组织者 organizers；guidance 可换 orientation。'},
+      {t:'it is highly recommended to be properly dressed for the occasion',n:'<b>第 3 点 · 着装。</b>properly 可换 warmly（冬天户外）/ plainly（支教、劳动），按场合三选一；题目没提着装就删这句，换一条细节。'}
+    ],
+    why:[
+      {t:'it has an official award from the authority',n:'<b>第 1 点 · 权威。</b>it 指你推荐的东西；award 可换 qualification / recognition，三选一。没有官方背书就把群众句提到第 1 点。'},
+      {t:'it enjoys widespread popularity among {crowd}',n:'<b>第 2 点 · 群众。</b>popularity 不可数，前面<b>千万别加 a</b>（换成 reputation / concern 时才加 a）；among 后填人群，随题换。'},
+      {t:'I personally find {item} attractive and interesting',n:'<b>第 3 点 · 个人。</b>这里填推荐对象；attractive 可换 interesting / beneficial。理由顺序固定：权威 → 群众 → 个人，别打乱。'}
+    ],
+    how:[
+      {t:"it's advisable to put things into perspective and establish a correct value about {topic} primarily",n:'<b>第 1 点 · 端正认识。</b>about 后填主题；It\'s advisable to 是固定开头，照抄别改写。'},
+      {t:'you could look for advanced experience in this aspect on online forums',n:'<b>第 2 点 · 找经验。</b>online forums 可换 Zhihu Community / Bilibili，也可换成 from senior students（向学长学姐请教）；experience 可用复数 experiences。'},
+      {t:'a practical and reasonable plan should be promptly carried out and remain high on your agenda',n:'<b>第 3 点 · 定计划。</b>plan 前加领域词更像自己的：study plan / training plan；should be carried out 是被动，别漏 be。'}
+    ],
+    mix:[
+      {t:'{item} enjoys widespread concern among {crowd}',n:'<b>第 1 点 · 群众。</b>填推荐的东西和人群；concern 前可以加 a（a widespread concern），但 popularity 不加 a，两个别混。'},
+      {t:'I personally find it attractive to discuss {topic}',n:'<b>第 2 点 · 个人。</b>discuss 后填主题；find it attractive to do 是固定搭配，中间的 it 不能省。'},
+      {t:'it will be held at {place} on {time}, and our {people} will be there to provide you with necessary guidance',n:'<b>第 3 点 · 活动安排。</b>是什么的句子用 and 拼进第三点：前半填时间、地点，后半填出席人员（可换 teachers / volunteers）。'}
+    ]
   };
-  var TAIL={
-    no:'I would be glad if you found the information mentioned above helpful. Should you have any further questions, please feel free to contact me.',
-    yes:'I would appreciate it if you could take my recommendation into serious consideration. And I would be much obliged to you for an early and positive reply.'
+  var TAILS={
+    no:[
+      {t:'I would be glad if you found the information mentioned above helpful.',n:'<b>尾段 · 不用回信。</b>found 是虚拟语气（写 find 也不扣分）；正文是给建议的题，把 information 换成 suggestions（加 s）。'},
+      {t:'Should you have any further questions, please feel free to contact me.',n:'<b>尾段 · 留联系。</b>固定收尾照抄；通知类最好再加一句下一步：去哪、找谁、截止哪天，写死一个。'}
+    ],
+    yes:[
+      {t:'I would appreciate it if you could take my {tailword} into serious consideration.',n:'<b>尾段 · 请对方考虑。</b>下划线的词按目的自动换：邀请 invitation、推荐 recommendation、给信息 questions；serious consideration 全小写。'},
+      {t:'And I would be much obliged to you for an early and positive reply.',n:'<b>尾段 · 等回复。</b>客套收尾照抄；注意 consideration 这类普通词再重要也不大写——实战里在这丢过分。'}
+    ]
   };
+  var plainText='';
   function build(){
     var type=document.getElementById('b-type').value;
-    var purpose=document.getElementById('b-purpose').value;
-    var y=YUAN[document.getElementById('b-yuan').value];
-    var tail=TAIL[document.getElementById('b-tail').value];
-    var lines=[];
-    if(type==='notice'){ lines.push('Notice',''); lines.push('This notice is to '+purpose+'.'); }
-    else{ lines.push('Dear Xx,',''); lines.push('I am writing this letter to '+purpose+'.'); }
-    lines.push('');
-    lines.push('Regarding '+y.topic+', there are several points I would mostly like to mention. First of all, '+y.points[0]+". What's more, "+y.points[1]+'. In addition, '+y.points[2]+'. For more details, you could refer to the attachment below.');
-    lines.push('');
-    if(type==='notice'){ lines.push(tail,'',"Students' Union",'June 15, 2024'); }
-    else{ lines.push(tail,'','Yours truly,','Li Ming'); }
-    document.getElementById('preview').textContent=lines.join('\n');
+    var pkey=document.getElementById('b-purpose').value;
+    var purpose=PURPOSE[pkey];
+    curTailword=TAILWORD[pkey];
+    var S=[],p=0;
+    if(type==='notice'){
+      S.push({t:'Notice',n:'<b>标题。</b>Notice 单独一行居中；通知没有 Dear，也不写 Yours truly。',p:p}); p++;
+      S.push({t:'This notice is to '+purpose.t+'.',n:purpose.n,p:p});
+    }else{
+      S.push({t:'Dear {recip},',n:'<b>抬头。</b>收信人每个词首字母大写，末尾加逗号；不知道具体名字就写 Dear Sir or Madam,。',p:p}); p++;
+      S.push({t:'I am writing this letter to '+purpose.t+'.',n:purpose.n,p:p});
+    }
+    p++;
+    S.push({t:'Regarding {topic}, there are several points I would mostly like to mention.',n:'<b>主体 · 骨架开头。</b>整句照背别改；Regarding 后必须接名词（就是主题），mostly 别丢。',p:p});
+    var conn=['First of all, ',"What's more, ",'In addition, '];
+    YUAN[document.getElementById('b-yuan').value].forEach(function(pt,i){
+      S.push({t:conn[i]+pt.t+'.',n:pt.n,p:p});
+    });
+    S.push({t:'For more details, you could refer to the attachment below.',n:'<b>主体 · 附件句。</b>只有你给对方细节时才用；反过来向对方要细节（问询类题）就整句删掉，方向别反。',p:p});
+    p++;
+    TAILS[document.getElementById('b-tail').value].forEach(function(s){ S.push({t:s.t,n:s.n,p:p}); });
+    p++;
+    if(type==='notice'){
+      S.push({t:'{org}',n:'<b>落款。</b>右下角写发通知的单位，不署个人名。',p:p}); p++;
+      S.push({t:'{date}',n:'<b>落款 · 日期。</b>写在单位下面，照题干给的日期填，月份用英文全称（如 June）。',p:p});
+    }else{
+      S.push({t:'Yours truly,',n:'<b>落款。</b>Yours 只有 Y 大写，后跟逗号。',p:p}); p++;
+      S.push({t:'{sign}',n:'<b>落款 · 署名。</b>题干指定谁签就签谁；没指定，默认写 Li Ming。',p:p});
+    }
+    var html='';
+    S.forEach(function(s,i){
+      var bp=(i>0&&s.p!==S[i-1].p)?' bp':'';
+      html+='<div class="bs'+bp+'"><span class="bt">'+renderHTML(s.t)+'</span><span class="bn">'+s.n+'</span></div>';
+    });
+    document.getElementById('preview').innerHTML=html;
+    var paras=[],cur=[],lastp=-1;
+    S.forEach(function(s){
+      if(s.p!==lastp){ if(cur.length)paras.push(cur.join(' ')); cur=[]; lastp=s.p; }
+      cur.push(renderText(s.t));
+    });
+    if(cur.length)paras.push(cur.join(' '));
+    plainText=paras.join('\n\n');
   }
   ['b-type','b-purpose','b-yuan','b-tail'].forEach(function(id){document.getElementById(id).addEventListener('change',build);});
+  Object.keys(FIELDS).forEach(function(k){
+    var f=FIELDS[k];
+    if(f.id) document.getElementById(f.id).addEventListener('input',build);
+  });
   build();
   document.getElementById('b-copy').addEventListener('click',function(){
     if(!navigator.clipboard) return;
-    navigator.clipboard.writeText(document.getElementById('preview').textContent).then(function(){
+    navigator.clipboard.writeText(plainText).then(function(){
       var d=document.getElementById('b-done'); d.textContent='已复制，去粘贴练习吧';
       setTimeout(function(){d.textContent='';},2000);
     });
