@@ -5,19 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
-<title>英语小作文模板 · 写作文五步</title>
+<title>英语小作文模板</title>
 <style>
 :root{
---paper:#FAF7F1; --paper2:#F3EEE3; --card:#FFFDF8; --ink:#1C1914; --ink2:#6E6656; --line:#E2DACA;
---red:#C63A1E; --red-ink:#C63A1E; --red-bg:#FAECE7;
---orig-bg:#F0EBDF; --orig-line:#D8D0BC;
---shadow:0 1px 2px rgba(28,25,20,.05);
+--paper:#FFFFFF; --paper2:#F5F5F5; --card:#FFFFFF; --ink:#111111; --ink2:#595959; --line:#DDDDDD;
+--shadow:0 1px 2px rgba(0,0,0,.06);
 }
 @media (prefers-color-scheme:dark){
-:root{ --paper:#16130E; --paper2:#201C15; --card:#221E17; --ink:#F0EAD8; --ink2:#A79D88; --line:#3A342A;
---red:#E8704F; --red-ink:#E8704F; --red-bg:#33211A;
---orig-bg:#26221A; --orig-line:#453E30;
---shadow:0 1px 2px rgba(0,0,0,.4);}
+:root{ --paper:#0B0B0B; --paper2:#171717; --card:#131313; --ink:#F5F5F5; --ink2:#A6A6A6; --line:#333333;
+--shadow:0 1px 2px rgba(0,0,0,.5);}
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
@@ -25,56 +21,60 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:"PingFang SC"
 .wrap{max-width:860px;margin:0 auto;padding:0 18px 56px}
 button{min-height:44px;min-width:44px;cursor:pointer;font:inherit}
 h2,h3{font-family:"Songti SC","STSong",Georgia,serif}
+a{color:var(--ink);font-weight:700}
 /* top tabs */
 .tabbar{position:sticky;top:0;z-index:60;background:var(--paper);display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:10px 0;border-bottom:2px solid var(--ink);scrollbar-width:none}
 .tabbar::-webkit-scrollbar{display:none}
 .tabbar button{flex:0 0 auto;min-height:44px;padding:8px 20px;border-radius:999px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);font-weight:700;font-size:15px}
-.tabbar button.on{background:var(--red);border-color:var(--red);color:#fff}
+.tabbar button.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .page{display:none}.page.active{display:block}
 /* step progress nav */
 .stepnav{position:sticky;top:66px;z-index:55;background:var(--paper);display:flex;gap:4px;padding:8px 0;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
 .stepnav::-webkit-scrollbar{display:none}
 .stepnav button{flex:1 0 auto;min-height:38px;padding:4px 10px;border:none;background:transparent;color:var(--ink2);font-size:13.5px;font-weight:600;border-bottom:3px solid transparent;border-radius:0}
 .stepnav button b{font-family:Georgia,serif;margin-right:4px}
-.stepnav button.on{color:var(--red-ink);border-bottom-color:var(--red)}
+.stepnav button.on{color:var(--ink);border-bottom-color:var(--ink)}
 .steppane{display:none}.steppane.active{display:block}
 /* step head */
 .step-head{display:flex;align-items:flex-start;gap:16px;margin:26px 0 6px}
-.step-head .big{font-family:Georgia,serif;font-size:64px;line-height:.95;color:var(--red);font-weight:700}
+.step-head .big{font-family:Georgia,serif;font-size:64px;line-height:.95;color:var(--ink);font-weight:700}
 .step-head h2{font-size:26px;margin:2px 0 2px;line-height:1.3}
 .step-head p{margin:0;color:var(--ink2);font-size:14px}
-/* side blocks: original vs upgrade */
-.side{border:1px solid var(--line);border-radius:10px;padding:18px;margin:16px 0;background:var(--card);box-shadow:var(--shadow)}
-.side.orig{background:var(--orig-bg);border-color:var(--orig-line)}
-.side.up{background:var(--card);border-color:var(--red)}
-.side .side-tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;padding:2px 10px;border-radius:999px;margin-bottom:8px}
-.side.orig .side-tag{background:var(--ink2);color:var(--paper)}
-.side.up .side-tag{background:var(--red);color:#fff}
-.side h3{font-size:18px;margin:4px 0 8px}
-.side p{font-size:14.5px;margin:6px 0}
+/* unified content block */
+.blk{border:1px solid var(--line);border-radius:10px;padding:18px;margin:16px 0;background:var(--card);box-shadow:var(--shadow)}
+.blk h3{font-size:18px;margin:4px 0 8px}
+.blk p{font-size:14.5px;margin:6px 0}
 .note{font-size:13px;color:var(--ink2)}
+/* source tags: grayscale only */
+.tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.06em;padding:2px 9px;border-radius:999px;margin-bottom:8px;vertical-align:middle}
+.tag.orig{background:var(--paper2);border:1px solid var(--line);color:var(--ink2)}
+.tag.fix{background:var(--ink);border:1px solid var(--ink);color:var(--paper)}
+.tag.new{background:var(--card);border:1.5px solid var(--ink);color:var(--ink)}
+.item{margin:12px 0}
+.item .tag{margin-bottom:5px}
 /* english sentence: one unified style */
-.sent{background:var(--paper2);border:1px solid var(--line);border-radius:8px;padding:12px 46px 12px 14px;position:relative;margin:8px 0;font-family:Georgia,"Times New Roman",serif;font-size:15.5px;line-height:1.7}
-.side.orig .sent{background:var(--card)}
+.sent{background:var(--paper2);border:1px solid var(--line);border-radius:8px;padding:12px 46px 12px 14px;position:relative;margin:0;font-family:Georgia,"Times New Roman",serif;font-size:15.5px;line-height:1.7}
 .sent .zh{display:block;font-family:"PingFang SC",sans-serif;font-size:12.5px;color:var(--ink2);margin-top:3px;line-height:1.6}
+.sent .use{display:block;font-family:"PingFang SC",sans-serif;font-size:12.5px;color:var(--ink2);margin-top:5px;padding-top:5px;border-top:1px dashed var(--line);line-height:1.65}
+.sent .use b{color:var(--ink)}
 .copy{position:absolute;top:7px;right:7px;min-height:34px;min-width:34px;width:34px;height:34px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink2);font-size:14px;display:flex;align-items:center;justify-content:center}
-.copy.done{background:var(--red);border-color:var(--red);color:#fff}
-.slot{color:var(--red-ink);font-weight:700}
-.conn{font-weight:700;color:var(--red-ink)}
-.fill{border-bottom:2px dotted var(--red);padding:0 3px;color:var(--ink2)}
+.copy.done{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.slot{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.conn{font-weight:700}
+.fill{border-bottom:2px dotted var(--ink2);padding:0 3px;color:var(--ink2)}
 /* question rows */
 .q{display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
 .q:last-child{border-bottom:none}
 .q .num{flex:0 0 32px;height:32px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:16px}
-.side.up .q .num{background:var(--red);color:#fff}
-.q b{font-size:15.5px}.q .arr{color:var(--red-ink);font-weight:700}
+.q b{font-size:15.5px}.q .arr{font-weight:700}
 .q p{margin:1px 0 0;color:var(--ink2);font-size:13.5px}
 /* step footer nav */
 .stepfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px}
 .stepfoot .hint{font-size:13px;color:var(--ink2)}
 .navbtn{min-height:48px;padding:10px 22px;border-radius:8px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);font-weight:700;font-size:15px}
-.navbtn.next{background:var(--red);border-color:var(--red);color:#fff}
+.navbtn.next{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .navbtn:disabled{opacity:.35;cursor:default}
+.gobtn{display:inline-block;min-height:44px;padding:9px 18px;border-radius:8px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);font-weight:700;font-size:14.5px;cursor:pointer}
 /* generic cards & sections for reference pages */
 .sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:8px;margin:26px 0 16px}
 .sec-head h2{font-size:22px;margin:0}
@@ -88,13 +88,15 @@ h2,h3{font-family:"Songti SC","STSong",Georgia,serif}
 .subpage{display:none}.subpage.active{display:block}
 .subpage>section{margin-top:14px}
 /* mantra */
-.mantra{background:var(--red-bg);border:1px solid var(--red);border-radius:10px;padding:14px 16px;font-size:15.5px;margin:12px 0;line-height:1.75}
-.mantra b{color:var(--red-ink)}
+.mantra{background:var(--paper2);border:1.5px solid var(--ink);border-radius:10px;padding:14px 16px;font-size:15.5px;margin:12px 0;line-height:1.75}
+/* menu group heading */
+.gh{font-size:17px;margin:22px 0 2px;font-family:"Songti SC","STSong",Georgia,serif}
+.gh small{font-family:"PingFang SC",sans-serif;font-size:12.5px;color:var(--ink2);font-weight:400;margin-left:6px}
 /* tables */
 table.cmp,table.years{width:100%;border-collapse:collapse;font-size:14px}
 table.cmp th,table.years th{text-align:left;padding:10px;border-bottom:2px solid var(--ink);font-size:13px;color:var(--ink2)}
 table.cmp td,table.years td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
-table.years td.yr{font-family:Georgia,serif;font-weight:700;color:var(--red-ink);white-space:nowrap}
+table.years td.yr{font-family:Georgia,serif;font-weight:700;white-space:nowrap}
 @media(max-width:600px){
 table.cmp thead,table.years thead{display:none}
 table.cmp td,table.years td{display:block;border-bottom:none;padding:3px 10px}
@@ -112,49 +114,43 @@ table.cmp td::before,table.years td::before{content:attr(data-l);display:block;f
 /* samples */
 .sample{display:flex;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line)}
 .sample:last-child{border:none}
-.sample .yr{flex:0 0 70px;font-family:Georgia,serif;font-weight:700;color:var(--red-ink);font-size:15px;line-height:1.4}
+.sample .yr{flex:0 0 70px;font-family:Georgia,serif;font-weight:700;font-size:15px;line-height:1.4}
 .sample b{font-size:15.5px}.sample p{margin:2px 0 0;font-size:13.5px;color:var(--ink2)}
 .pill{display:inline-block;font-size:12px;font-weight:700;padding:1px 8px;border-radius:999px;background:var(--paper2);border:1px solid var(--line)}
 /* checklist */
 ul.check{list-style:none;margin:0;padding:0}
 ul.check li{padding:10px 0 10px 32px;position:relative;border-bottom:1px dashed var(--line);font-size:14.5px}
 ul.check li:last-child{border:none}
-ul.check li::before{content:"✕";position:absolute;left:2px;top:12px;width:20px;height:20px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+ul.check li::before{content:"✕";position:absolute;left:2px;top:12px;width:20px;height:20px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
 /* builder */
 .builder select{width:100%;min-height:48px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:15px;margin:4px 0 12px}
 .builder label{font-size:13px;font-weight:700;color:var(--ink2)}
 #preview{white-space:pre-wrap;background:var(--paper2);border:1px solid var(--line);border-radius:10px;padding:18px;font-size:15px;line-height:1.8;min-height:200px;font-family:Georgia,serif}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;border:none;background:var(--red);color:#fff;font-weight:700;font-size:15px}
-.bank{display:grid;grid-template-columns:1fr;gap:12px}
-@media(min-width:640px){.bank{grid-template-columns:1fr 1fr}}
-.src{font-size:12px;color:var(--ink2)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;border:none;background:var(--ink);color:var(--paper);font-weight:700;font-size:15px;min-height:48px;cursor:pointer}
 footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink2);font-size:13px}
 .intro{margin:22px 0 0}
 .intro h1{font-family:"Songti SC","STSong",Georgia,serif;font-size:28px;line-height:1.3;margin:0 0 6px;font-weight:900}
 .intro p{color:var(--ink2);font-size:14.5px;margin:0}
-.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.legend span{font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:999px}
-.legend .lo{background:var(--orig-bg);border:1px solid var(--orig-line);color:var(--ink2)}
-.legend .lu{background:var(--red-bg);border:1px solid var(--red);color:var(--red-ink)}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.legend .tag{margin-bottom:0}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <nav class="tabbar" id="tabbar" aria-label="分类">
-<button type="button" data-page="page-write" class="on">写作文</button>
-<button type="button" data-page="page-juku">句库</button>
+<button type="button" data-page="page-up" class="on">我们升级版</button>
+<button type="button" data-page="page-monkey">Monkey 原版</button>
 <button type="button" data-page="page-years">历年题型</button>
-<button type="button" data-page="page-fanwen">范文拆解</button>
 <button type="button" data-page="page-builder">拼文练习</button>
 </nav>
 
-<!-- ============ 写作文：五步分页 ============ -->
-<div class="page active" id="page-write">
+<!-- ============ 我们升级版（融合版）：五步分页 ============ -->
+<div class="page active" id="page-up">
 <div class="intro">
 <h1>写一篇小作文，只有五步</h1>
-<p>按写作文的顺序走：审题 → 首段 → 主体 → 尾段 → 自查。一次只看一步，点步骤或按「下一步」往下走。每步里分清两边——灰底是老师的原版，朱红是我们改过、补过的升级版。</p>
-<div class="legend"><span class="lo">■ Monkey 原版 · 老师给的，照用</span><span class="lu">■ 我们升级版 · 自己改的 / 补的，优先用</span></div>
+<p>这一页是融合版：一套完整模板，只看这一页就能从审题写到自查，不用去别处拼。每句都标了出处，每句下面都写清用法——属于哪一元、放第几点、什么题用、哪里可换。想看老师原版原貌，去「Monkey 原版」页对照。</p>
+<div class="legend"><span class="tag orig">原版保留</span><span class="tag fix">我们修正</span><span class="tag new">我们新补</span></div>
 </div>
 
 <nav class="stepnav" id="stepnav" aria-label="步骤">
@@ -169,24 +165,13 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
 <section class="steppane active" id="step1">
 <div class="step-head"><span class="big">01</span><div><h2>审题</h2><p>动笔前先想清三件事，30 秒搞定</p></div></div>
 
-<div class="side up">
-<span class="side-tag">我们升级版</span>
-<h3>审题只问 3 问（一页纸万能版）</h3>
+<div class="blk">
+<span class="tag new">我们新补</span>
+<h3>审题只问 3 问</h3>
 <div class="q"><div class="num">1</div><div><b>写给谁？</b> <span class="arr">→ 定抬头</span><p>不知道具体人名（客服、机构）→ <span class="en">Dear Sir or Madam,</span></p></div></div>
 <div class="q"><div class="num">2</div><div><b>两个任务点是什么？</b> <span class="arr">→ 直接抄题干动词</span><p>题干 1) 2) 列的两个动作就是全文要干的两件事，首段照抄（记得换人称：<span class="en">him → you，your → my</span>）。</p></div></div>
 <div class="q"><div class="num">3</div><div><b>要不要回信？</b> <span class="arr">→ 定尾段</span><p>投诉 / 申请 / 建议 / 邀请 / 推荐 → 要回信版；告知 / 招募 / 回复问询 → 不用回信版。</p></div></div>
 <p style="margin-top:12px"><b>写信还是通知，一句话判断：</b>题干里有 <span class="en">notice</span> 这个词 → 通知；没有 → 写信（letter 和 email 都按信写）。</p>
-</div>
-
-<div class="side orig">
-<span class="side-tag">Monkey 原版</span>
-<h3>审题五问（老师的完整版）</h3>
-<div class="q"><div class="num">1</div><div><b>对方是谁？</b> → 定抬头：<span class="en">Dear Xx,</span> 每词首字母大写 + 逗号</div></div>
-<div class="q"><div class="num">2</div><div><b>是不是 notice？</b> → 定第一句：有 → <span class="en">This notice is to…</span>；没有 → <span class="en">I am writing this letter to…</span></div></div>
-<div class="q"><div class="num">3</div><div><b>次要目的 + 主要目的是什么？</b> → 定首段：次要 = 感谢 / 道歉 / 祝贺等客套；主要 = 题干重点要求的事</div></div>
-<div class="q"><div class="num">4</div><div><b>主要目的实质涉及哪一元？</b> → 定主体选句：介绍 → 是什么；讲理由 → 为什么；给建议 → 怎么办</div></div>
-<div class="q"><div class="num">5</div><div><b>是否必须对方回信？</b> → 定尾段：公告 / 招募 / 回复问询不用回；建议 / 推荐 / 申请 / 投诉要回</div></div>
-<p class="note">五问是全套，考场上用左边的 3 问就够——3 问是 5 问的压缩版，结论一样。</p>
 </div>
 
 <div class="stepfoot"><span class="hint">审完题，开始写第一段</span><button type="button" class="navbtn next" data-goto="step2">下一步：首段 →</button></div>
@@ -196,24 +181,22 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
 <section class="steppane" id="step2">
 <div class="step-head"><span class="big">02</span><div><h2>首段</h2><p>一句话说清来意：客套（可省）+ 正事</p></div></div>
 
-<div class="side up">
-<span class="side-tag">我们升级版</span>
+<div class="blk">
+<span class="tag new">我们新补</span>
 <h3>只背 1 个句式</h3>
 <p><b>写信版：</b></p>
-<div class="sent">I am writing this letter to <span class="slot">[情感动作，可省]</span> and to <span class="slot">[主要动作，照抄题干]</span>.<span class="zh">没有客套就跳过情感动作，直接接主要动作</span><button class="copy" aria-label="复制">⧉</button></div>
+<div class="item"><div class="sent">I am writing this letter to <span class="slot">[情感动作，可省]</span> and to <span class="slot">[主要动作，照抄题干]</span>.<span class="zh">没有客套就跳过情感动作，直接接主要动作</span><span class="use"><b>用法：</b>首段唯一句式｜情感动作从下面小菜单三选一，主要动作填「主要目的四选一」或照抄题干</span><button class="copy" aria-label="复制">⧉</button></div></div>
 <p><b>通知版：</b>只换开头这一处。</p>
-<div class="sent">This notice is to <span class="slot">[主要动作]</span>.<button class="copy" aria-label="复制">⧉</button></div>
+<div class="item"><div class="sent">This notice is to <span class="slot">[主要动作]</span>.<span class="use"><b>用法：</b>通知首段｜只接主要动作，不接情感动作</span><button class="copy" aria-label="复制">⧉</button></div></div>
 <p><b>情感动作小菜单</b>（有才写，三选一）：<span class="en">thank you for… ／ congratulate you on… ／ apologize for…</span></p>
 </div>
 
-<div class="side orig">
-<span class="side-tag">Monkey 原版</span>
-<h3>首段公式 + 主要目的四选一</h3>
-<p><span class="en">Dear Xx,</span><br><span class="en">I am writing this letter to</span> ＋ 次要目的（客套）＋ <span class="en">and to</span> ＋ 主要目的（正事）。通知版把第一句换成 <span class="en">This notice is to…</span>，其余不变。</p>
-<p style="margin-top:10px"><b>主要目的四选一：</b></p>
-<div class="sent">offer you some <span class="slot">suggestions / information</span> about sth / how to do sth.<span class="zh">① 给建议 / 给信息</span><button class="copy" aria-label="复制">⧉</button></div>
-<div class="sent">extend you an invitation to do sth.<span class="zh">② 发邀请</span><button class="copy" aria-label="复制">⧉</button></div>
-<div class="sent">recommend you sth.<span class="zh">③ 推荐东西</span><button class="copy" aria-label="复制">⧉</button></div>
+<div class="blk">
+<span class="tag orig">原版保留</span>
+<h3>主要目的四选一（填进上面句式的主要动作）</h3>
+<div class="item"><div class="sent">offer you some <span class="slot">suggestions / information</span> about sth / how to do sth.<span class="zh">① 给建议 / 给信息</span><button class="copy" aria-label="复制">⧉</button></div></div>
+<div class="item"><div class="sent">extend you an invitation to do sth.<span class="zh">② 发邀请</span><button class="copy" aria-label="复制">⧉</button></div></div>
+<div class="item"><div class="sent">recommend you sth.<span class="zh">③ 推荐东西</span><button class="copy" aria-label="复制">⧉</button></div></div>
 <p>④ 以上都不贴 → 直接<b>照抄题干</b>的要求，但<b>必须换人称</b>：<span class="en">him / her → you，your → my</span>。例：题干 <span class="en">thank him, give your advice</span> → 正文 <span class="en">thank you and give you my advice</span>。原样照抄 = 没过脑子，要扣分。</p>
 </div>
 
@@ -224,28 +207,84 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
 <section class="steppane" id="step3">
 <div class="step-head"><span class="big">03</span><div><h2>主体</h2><p>骨架照背，只填 3 个空——全篇唯一要动脑的地方</p></div></div>
 
-<div class="side orig">
-<span class="side-tag">Monkey 原版</span>
+<div class="blk">
+<span class="tag orig">原版保留</span>
 <h3>固定骨架（28 词，整段照背）</h3>
-<div class="sent">Regarding <span class="slot">…(sth)</span>, there are several points I would <b>mostly</b> like to mention. <span class="conn">First of all,</span> <span class="fill">论点 1</span>. <span class="conn">What's more,</span> <span class="fill">论点 2</span>. <span class="conn">In addition,</span> <span class="fill">论点 3</span>. For more details, you could refer to the attachment below.<button class="copy" aria-label="复制">⧉</button></div>
-<p class="note">规矩：Regarding 后必须接名词；三个过渡词不许换成 <span class="en">last but not least</span> 之类（它们不分主次）；过渡词后首字母小写；<span class="en">mostly</span> 别丢（四篇范文原文都带）。三坑不够用时，用 <span class="en">and</span> 在第三点里追加第四点。论点从「三元 9 句」里挑——全量在<a href="#" data-jump="page-juku" style="color:var(--red-ink);font-weight:700">句库页</a>。</p>
+<div class="item"><div class="sent">Regarding <span class="slot">…(sth)</span>, there are several points I would <b>mostly</b> like to mention. <span class="conn">First of all,</span> <span class="fill">论点 1</span>. <span class="conn">What's more,</span> <span class="fill">论点 2</span>. <span class="conn">In addition,</span> <span class="fill">论点 3</span>. For more details, you could refer to the attachment below.<button class="copy" aria-label="复制">⧉</button></div></div>
+<p class="note">规矩：Regarding 后必须接名词；三个过渡词不许换成 <span class="en">last but not least</span> 之类（它们不分主次）；过渡词后首字母小写；<span class="en">mostly</span> 别丢（四篇范文原文都带）。三坑不够用时，用 <span class="en">and</span> 在第三点里追加第四点。三个论点从下面的选句菜单里挑——按元分组，每句都标了用法。</p>
 </div>
 
-<div class="side up">
-<span class="side-tag">我们升级版</span>
-<h3>填空口诀 + 选句菜单（每类只 2 句）</h3>
+<div class="blk">
+<span class="tag new">我们新补</span>
+<h3>填空口诀</h3>
 <div class="mantra"><b>填空口诀：</b>第一个任务点填<b>前两空</b>（说透它），第二个任务点填<b>第三空</b>，<b>尾段再呼应第二个任务点</b>。</div>
-<p><b>介绍信息：</b></p>
-<div class="sent">it will be held in <span class="slot">[地点]</span> on <span class="slot">[时间]</span>.<span class="zh">活动将于某时在某地举行</span><button class="copy" aria-label="复制">⧉</button></div>
-<div class="sent">it is located in <span class="slot">[地点]</span>.<span class="zh">它位于……（介绍场所、景点时用）</span><button class="copy" aria-label="复制">⧉</button></div>
-<p><b>讲理由 / 感受：</b></p>
-<div class="sent">enjoys widespread popularity among <span class="slot">[人群]</span>.<span class="zh">广受欢迎——popularity 不可数，前面不加 a（原版误加，是我们改的）</span><button class="copy" aria-label="复制">⧉</button></div>
-<div class="sent">I personally find it attractive / interesting / necessary (to do sth).<span class="zh">我个人觉得它有吸引力 / 有趣 / 有必要——按题三选一</span><button class="copy" aria-label="复制">⧉</button></div>
-<p><b>给建议：</b></p>
-<div class="sent">you could look for relevant experience in this aspect on Zhihu Community.<span class="zh">去知乎找现成经验</span><button class="copy" aria-label="复制">⧉</button></div>
-<div class="sent">a practical and reasonable plan should be promptly carried out.<span class="zh">制定切实合理的计划并马上执行（可写成 study plan 等具体计划）</span><button class="copy" aria-label="复制">⧉</button></div>
-<p class="note">投诉题、感受题菜单里没有现成的 → 用句库页的「补丁句」（我们自补：投诉 3 句 + 感受 2 句）。</p>
-<p><b>附件句方向规则</b>（我们定的）：<span class="en">For more details, you could refer to the attachment below.</span> —— <b>只有我给对方细节时才用</b>；方向反了（是我向对方要细节，如 2026 那篇）就不用，硬塞会把意思说反。</p>
+<p class="note">选句先定元：介绍某事 → 是什么组；讲理由、说感受 → 为什么组；给建议 → 怎么办组；投诉题 → 补丁组。每句的用法标注写清了放第几点，照着填就行。</p>
+</div>
+
+<h3 class="gh">是什么组<small>说明介绍 · 活动、通知、介绍类题</small></h3>
+
+<div class="item"><span class="tag orig">原版保留</span><div class="sent">it will be held / it is located in (behind) the Main Building (next Sunday).<span class="zh">时间地点：它将于下周日在主楼举行 / 位于主楼（后面）。地点可替换，如 at a rural school</span><span class="use"><b>用法：</b>是什么 · 时间地点｜放第 1 点（First of all）｜活动、通知、介绍类题｜可换：地点、时间换成题目给的</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag orig">原版保留</span><div class="sent">we will gather in the Main Building next Sunday and set off to the spot (and please make sure you are available then).<span class="zh">集合出发版：校外活动用这个</span><span class="use"><b>用法：</b>是什么 · 集合出发｜放第 1 点｜校外活动题｜可换：集合地点、时间</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag orig">原版保留</span><div class="sent">our staff will be there to provide you with necessary orientation / guidance.<span class="zh">出席人物：工作人员届时提供必要的培训、介绍、引导</span><span class="use"><b>用法：</b>是什么 · 出席人物｜放第 2 点（What's more）｜活动类题｜可换：staff 换成 teachers / volunteers / organizers（见本页下方替换表）；orientation / guidance 二选一</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag orig">原版保留</span><div class="sent">it is highly recommended to be properly / warmly / plainly dressed for the occasion.<span class="zh">着装要求：得体 / 保暖 / 朴素——按场合三选一</span><span class="use"><b>用法：</b>是什么 · 着装要求｜放第 3 点（In addition）｜有着装要求的活动｜可换：properly / warmly / plainly 按场合三选一</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<h3 class="gh">为什么组<small>分析利弊 · 推荐、介绍、感受类题；理由按 权威 → 群众 → 个人 排</small></h3>
+
+<div class="item"><span class="tag orig">原版保留</span><div class="sent">has an official award / qualification / recognition from the authority.<span class="zh">权威认可：官方奖项 / 资质 / 认可</span><span class="use"><b>用法：</b>为什么 · 权威认可｜放第 1 点｜推荐类题｜可换：award / qualification / recognition 三选一</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag orig">原版保留</span><div class="sent">is awarded with the title of Material / Intangible Cultural Heritage from the United Nations.<span class="zh">升级说法：被联合国授予物质 / 非物质文化遗产称号（推长城、故宫时用）</span><span class="use"><b>用法：</b>为什么 · 权威认可（升级说法）｜放第 1 点｜推荐文化景点题｜可换：Material / Intangible 二选一</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag fix">我们修正</span><div class="sent">enjoys widespread popularity among <span class="slot">[人群]</span>.<span class="zh">广受欢迎——popularity 不可数，前面不加 a（原版误加，是我们改的）；换成 reputation / concern 时才加 a</span><span class="use"><b>用法：</b>为什么 · 群众基础｜放第 2 点（What's more）｜推荐、介绍类题｜可换：among 后的人群随题换（students / consumers / citizens…）</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag orig">原版保留</span><div class="sent">I personally find it attractive / interesting / beneficial / necessary (to do sth).<span class="zh">个人喜欢：it 是形式宾语，如 find it interesting to climb the Great Wall</span><span class="use"><b>用法：</b>为什么 · 个人喜欢｜放第 3 点（In addition）｜推荐、建议类题｜可换：attractive / interesting / beneficial / necessary 按题选；to do sth 接具体事</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag new">我们新补</span><div class="sent">I personally find it disappointing that <span class="slot">[让你失望的事]</span>.<span class="zh">负面感受：我个人觉得很失望的是……（实战自补）</span><span class="use"><b>用法：</b>为什么 · 个人感受（反面）｜放第 2 或第 3 点｜感受、投诉类题｜可换：that 后接让你失望的具体事</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag new">我们新补</span><div class="sent">I was deeply impressed by <span class="slot">[打动你的东西]</span>.<span class="zh">正面感受：……给我留下了深刻印象（实战自补）</span><span class="use"><b>用法：</b>为什么 · 个人感受（正面）｜放第 1 点｜说感受的题（如看完视频、参观之后）｜可换：by 后接打动你的东西</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<h3 class="gh">怎么办组<small>建议意见 · 建议类题</small></h3>
+
+<div class="item"><span class="tag orig">原版保留</span><div class="sent">It's advisable to put things into perspective and establish a correct value about sth primarily.<span class="zh">端正认识：先摆正心态、建立正确价值观</span><span class="use"><b>用法：</b>怎么办 · 端正认识｜放第 1 点｜建议类题｜可换：about sth 换成题目主题</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag orig">原版保留</span><div class="sent">you could look for relevant / advanced / international / historical experience in this aspect on Zhihu Community.<span class="zh">实践经验：去知乎找现成经验（范文里 experience 可用复数 experiences）</span><span class="use"><b>用法：</b>怎么办 · 实践经验｜放第 2 点（What's more）｜建议类题｜可换：relevant / advanced / international / historical 选一个；平台可换（见本页下方替换表）</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag orig">原版保留</span><div class="sent">a practical and reasonable plan should be promptly carried out and remain high on your agenda.<span class="zh">知行合一：制定合理可行的计划并优先执行</span><span class="use"><b>用法：</b>怎么办 · 知行合一｜放第 3 点（In addition）｜建议类题｜可换：plan 前加领域词，如 study plan / training plan</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<h3 class="gh">补丁组 · 投诉<small>原版没有投诉句式，这 3 句是我们自己补的：毛病 → 影响 → 诉求，正好填三个空</small></h3>
+
+<div class="item"><span class="tag new">我们新补</span><div class="sent">it cannot be turned on at all.<span class="zh">毛病句：根本开不了机（故障说法可换）</span><span class="use"><b>用法：</b>是什么 · 毛病｜放第 1 点（First of all）｜投诉信专用｜可换：主语换成具体物品；句尾可加 although I have tried several times（试了好几次了，拉满真实感）</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag new">我们新补</span><div class="sent">it has caused me great inconvenience in my study.<span class="zh">影响句：给我造成了很大不便——比 gives me some problems 正式一档</span><span class="use"><b>用法：</b>影响｜放第 2 点（What's more）｜投诉、道歉类题｜可换：in my study 换成你的场景（in my work / in my daily life）</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="item"><span class="tag new">我们新补</span><div class="sent">I demand a replacement or a full refund.<span class="zh">诉求句：换货或全额退款——投诉信的正经诉求说法</span><span class="use"><b>用法：</b>诉求｜放第 3 点（In addition）｜投诉信｜可换：a replacement / a full refund 二选一，写死一个</span><button class="copy" aria-label="复制">⧉</button></div></div>
+
+<div class="blk">
+<span class="tag new">我们新补</span>
+<h3>附件句方向规则</h3>
+<p><b>只有我给对方细节时才用</b>；方向反了（是我向对方要细节，如 2026 那篇）就不用，硬塞会把意思说反。整句见上面主体骨架的最后一句。</p>
+<p class="note"><b>用法：</b>主体段末尾（骨架最后一句）｜介绍、告知类，我手里有细节给对方时｜方向不对就整句删掉。</p>
+</div>
+
+<div class="blk">
+<span class="tag new">我们新补</span>
+<h3>填的时候换成自己的说法</h3>
+<p><b>固定不改：</b>主体段骨架、三个过渡词、首尾段公式、抬头落款格式——这些是阅卷人眼里的「结构分」，改了反而丢分。<br><b>可以换：</b>骨架里填的<b>具体名词和场景</b>——换成自己熟悉的说法，写起来顺，也不容易和别人撞模板。</p>
+<table class="cmp">
+<thead><tr><th style="width:20%">位置</th><th style="width:36%">原版（Monkey）</th><th>我们自己的版</th></tr></thead>
+<tbody>
+<tr><td data-l="位置"><b>活动地点</b></td><td data-l="原版" class="en">the Main Building</td><td data-l="我们版"><span class="en">the lecture hall / the school playground / the Students' Activity Center</span><br><span class="note">换成自己学校真实有的地方，更像真事</span></td></tr>
+<tr><td data-l="位置"><b>找经验的平台</b></td><td data-l="原版" class="en">on Zhihu Community</td><td data-l="我们版"><span class="en">on Bilibili / on online forums / from senior students</span><br><span class="note">知乎用烂了就换；向学长学姐请教更朴素百搭</span></td></tr>
+<tr><td data-l="位置"><b>万能推荐对象</b></td><td data-l="原版" class="en">The Great Wall</td><td data-l="我们版"><span class="en">The Great Wall（默认保留）/ Forbidden City（备选）</span><br><span class="note">长城一物三用：景点、电影、书都能推，理由现成；想避开撞车就换故宫</span></td></tr>
+<tr><td data-l="位置"><b>群众对象</b></td><td data-l="原版" class="en">among 人民群众</td><td data-l="我们版"><span class="en">among students / young people / consumers / local citizens</span><br><span class="note">必须随题换：校园题 students，消费题 consumers，城市题 citizens</span></td></tr>
+<tr><td data-l="位置"><b>着装词</b></td><td data-l="原版" class="en">properly / warmly / plainly dressed</td><td data-l="我们版"><span class="en">正式场合 properly · 冬天户外 warmly · 支教/劳动 plainly</span><br><span class="note">三选一本来就是留给我们的口子，按场景挑</span></td></tr>
+<tr><td data-l="位置"><b>计划的名称</b></td><td data-l="原版" class="en">a practical and reasonable plan</td><td data-l="我们版"><span class="en">a practical and reasonable study plan / training plan / reading plan</span><br><span class="note">加上具体领域，立刻不像背的（范文里 Jack 那篇就写 study plan）</span></td></tr>
+<tr><td data-l="位置"><b>工作人员</b></td><td data-l="原版" class="en">our staff … orientation / guidance</td><td data-l="我们版"><span class="en">our teachers / volunteers / organizers will be there…</span><br><span class="note">主语按活动换：比赛 organizers，支教 volunteers</span></td></tr>
+</tbody>
+</table>
+<p style="margin-top:12px"><b>换的边界：</b>只能换名词和场景，<b>句式结构一个词都不动</b>。能把 <span class="en">Zhihu Community</span> 换成 <span class="en">Bilibili</span>，但不能改写 <span class="en">look for … experience in this aspect on …</span> 的句式——那就不是模板了。</p>
 </div>
 
 <div class="stepfoot"><button type="button" class="navbtn" data-goto="step2">← 上一步</button><button type="button" class="navbtn next" data-goto="step4">下一步：尾段 →</button></div>
@@ -255,23 +294,29 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
 <section class="steppane" id="step4">
 <div class="step-head"><span class="big">04</span><div><h2>尾段</h2><p>先按要不要回信二选一，再想想能不能升级</p></div></div>
 
-<div class="side orig">
-<span class="side-tag">Monkey 原版</span>
+<div class="blk">
+<span class="tag orig">原版保留</span>
 <h3>尾段 2 选 1 + 落款</h3>
 <p><b>① 不用回信</b>（告知 / 招募 / 回复问询）：</p>
-<div class="sent">I would be glad if you found the information / suggestions mentioned above helpful. Should you have any further questions, please feel free to contact me.<span class="zh">提信息用 information，建议用 suggestions；found 是虚拟语气，写 find 也不扣分</span><button class="copy" aria-label="复制">⧉</button></div>
+<div class="item"><div class="sent">I would be glad if you found the information / suggestions mentioned above helpful. Should you have any further questions, please feel free to contact me.<span class="zh">提信息用 information，建议用 suggestions；found 是虚拟语气，写 find 也不扣分</span><span class="use"><b>用法：</b>尾段｜告知、招募、回复问询类题｜可换：information / suggestions 按正文内容二选一</span><button class="copy" aria-label="复制">⧉</button></div></div>
 <p><b>② 要回信</b>（投诉 / 申请 / 建议 / 邀请 / 推荐）：</p>
-<div class="sent">I would appreciate it if you could take my <span class="slot">complaint / application / recommendation / invitation / questions</span> into serious consideration. And I would be much obliged to you for an early and positive reply.<span class="zh">空里按文体填一个</span><button class="copy" aria-label="复制">⧉</button></div>
+<div class="item"><div class="sent">I would appreciate it if you could take my <span class="slot">complaint / application / recommendation / invitation / questions</span> into serious consideration. And I would be much obliged to you for an early and positive reply.<span class="zh">空里按文体填一个</span><span class="use"><b>用法：</b>尾段｜投诉、申请、建议、邀请、推荐类题｜可换：空里按文体填一个词</span><button class="copy" aria-label="复制">⧉</button></div></div>
 <p><b>落款规则：</b>写信 → <span class="en">Yours truly,</span> + 题干指定名，没指定默认 <span class="en">Li Ming</span>（Yours 只有 Y 大写）；通知 → 落<b>机构名 + 日期</b>，不署个人名。</p>
 </div>
 
-<div class="side up">
-<span class="side-tag">我们升级版</span>
+<div class="blk">
+<span class="tag new">我们新补</span>
 <h3>尾段升级：给读者一个下一步</h3>
 <p>结尾别只写空泛的 <span class="en">an early and positive reply</span>，要<b>给读者一个具体的下一步</b>：动作 + 期限，或一个联系点。例：请 3 月 31 日前答复；有问题去 102 室 / 问前台；3 月 10 日前交简历。<b>通知类尤其要用</b>——报名截止 + 找谁报名，两样都要写死。</p>
-<h3 style="margin-top:16px">口气按关系分</h3>
+<p class="note"><b>用法：</b>尾段（本步）｜通知类必用，邀请、申请、招募类也用｜把「动作 + 截止时间 / 联系人 / 地点」写成一句具体的收尾，接在模板尾段句之后或替换空泛的 reply 句。</p>
+</div>
+
+<div class="blk">
+<span class="tag new">我们新补</span>
+<h3>口气按关系分</h3>
 <p><b>写给陌生人 / 教授 / 客服（正式）：</b>多用 <span class="en">could、would</span>，而且<b>不用缩写</b>——<span class="en">cannot、do not</span> 写全，<span class="en">I would</span> 不写 <span class="en">I'd</span>。</p>
 <p><b>写给朋友（随意）：</b>可以缩写（<span class="en">can't、don't、I've</span> 都行），落款可换 <span class="en">Best wishes,</span>。</p>
+<p class="note"><b>用法：</b>全程（首段到落款）｜看审题第 1 问定的关系：陌生人、教授、客服走正式；朋友走随意。</p>
 </div>
 
 <div class="stepfoot"><button type="button" class="navbtn" data-goto="step3">← 上一步</button><button type="button" class="navbtn next" data-goto="step5">下一步：自查 →</button></div>
@@ -281,112 +326,161 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
 <section class="steppane" id="step5">
 <div class="step-head"><span class="big">05</span><div><h2>自查</h2><p>交卷前固定动作：先做两查，再扫易错清单</p></div></div>
 
-<div class="side up">
-<span class="side-tag">我们升级版</span>
+<div class="blk">
+<span class="tag new">我们新补</span>
 <h3>收尾两查</h3>
 <div class="q"><div class="num">1</div><div><b>大小写专扫</b><p>只盯专有名词、句首、抬头落款，单独扫一遍——这是实战里丢分最多的地方，内容写得再好也救不回来。</p></div></div>
 <div class="q"><div class="num">2</div><div><b>读者还会问什么？</b><p>通读一遍问自己：读者读完还要回头问我什么吗？还要问 = 漏了细节——时间 / 地点 / 找谁 / 截止，缺哪个补哪个。</p></div></div>
 </div>
 
-<div class="side orig">
-<span class="side-tag">Monkey 原版</span>
-<h3>易错清单（只留最高频的）</h3>
+<div class="blk">
+<span class="tag orig">原版保留</span>
+<h3>易错清单 · 完整版（全站只此一份）</h3>
 <ul class="check">
-<li><b>suggestions 加 s，information 不加 s</b>——建议可数；information 不可数，永远单数。</li>
-<li><b>抬头每个词首字母大写 + 逗号</b>：<span class="en">Dear Professor Cook,</span> 别只大写第一个词。</li>
+<li><b>suggestions 加 s，information 不加 s</b>——建议不止一条所以可数；information 不可数，永远单数。</li>
+<li><b>抬头每个词首字母大写 + 逗号</b>：<span class="en">Dear International Student Volunteer,</span> 别只大写第一个词。</li>
 <li><b>落款 Yours 只有 Y 大写</b>：<span class="en">Yours truly,</span> 后跟逗号；署名默认 <span class="en">Li Ming</span>。</li>
-<li><b>过渡词后首字母小写</b>：<span class="en">First of all, it…</span>，别写成 <span class="en">It…</span></li>
+<li><b>过渡词后首字母小写</b>：<span class="en">First of all, it…</span> 不要写成 <span class="en">First of all, It…</span></li>
+<li><b>过渡词不许自创</b>：别把 <span class="en">In addition</span> 换成 <span class="en">last but not least</span>，三点不分主次。</li>
 <li><b>照抄题干要换人称</b>：<span class="en">him → you，your → my</span>，原样抄 = 没审题。</li>
-<li><b>专有名词别半截大写</b>：<span class="en">the Great Wall、the Main Building、China</span> 该大的全大；句中普通词（consideration 等）再重要也不大写。</li>
+<li><b>Main Building 两个词都大写</b>；放不进主楼用 <span class="en">behind / beside the Main Building</span>。</li>
+<li><b>专有名词别半截大写</b>：该大的全大；句中普通词（consideration 等）再重要也不大写。</li>
+<li><b>attachment 纸质信也能用</b>：附件可以是照片、名单、资料。</li>
+<li><b>Regarding 后必须跟名词</b>，别写成光秃秃的 <span class="en">Regarding, there are…</span></li>
 <li><b>通知别写 Dear 和 Yours truly</b>：标题 Notice 居中，结尾右下角写单位 + 日期。</li>
 </ul>
-<p class="note">完整易错清单在<a href="#" data-jump="page-fanwen" style="color:var(--red-ink);font-weight:700">范文拆解页</a>的「模板详解」里。</p>
 </div>
 
 <div class="stepfoot"><button type="button" class="navbtn" data-goto="step4">← 上一步</button><span class="hint">两查都过，就可以交卷了 ✓</span></div>
 </section>
 </div>
 
-<!-- ============ 句库 ============ -->
-<div class="page" id="page-juku">
-  <div class="sec-head"><h2>句库</h2><p>全部可复制<br>原版与升级版分开放</p></div>
-  <div class="subbar" data-subbar="juku">
-    <button type="button" data-sub="juku-orig" class="on">Monkey 原版 · 三元 9 句</button>
-    <button type="button" data-sub="juku-up">我们升级版 · 好句</button>
-    <button type="button" data-sub="juku-patch">我们升级版 · 补丁句</button>
+<!-- ============ Monkey 原版 ============ -->
+<div class="page" id="page-monkey">
+  <div class="sec-head"><h2>Monkey 原版</h2><p>只放老师原版<br>对照查阅用</p></div>
+  <div class="subbar" data-subbar="monkey">
+    <button type="button" data-sub="mk-exam" class="on">审题</button>
+    <button type="button" data-sub="mk-nine">三元 9 句</button>
+    <button type="button" data-sub="mk-frame">首尾段</button>
+    <button type="button" data-sub="mk-samples">范文</button>
   </div>
 
-  <div class="subpage active" id="juku-orig">
-    <div class="side orig">
-      <span class="side-tag">Monkey 原版</span>
+  <div class="subpage active" id="mk-exam">
+    <div class="blk">
+      <span class="tag orig">Monkey 原版</span>
+      <h3>审题五问</h3>
+      <div class="q"><div class="num">1</div><div><b>对方是谁？</b> → 定抬头：<span class="en">Dear Xx,</span> 每词首字母大写 + 逗号</div></div>
+      <div class="q"><div class="num">2</div><div><b>是不是 notice？</b> → 定第一句：有 → <span class="en">This notice is to…</span>；没有 → <span class="en">I am writing this letter to…</span></div></div>
+      <div class="q"><div class="num">3</div><div><b>次要目的 + 主要目的是什么？</b> → 定首段：次要 = 感谢 / 道歉 / 祝贺等客套；主要 = 题干重点要求的事</div></div>
+      <div class="q"><div class="num">4</div><div><b>主要目的实质涉及哪一元？</b> → 定主体选句：介绍 → 是什么；讲理由 → 为什么；给建议 → 怎么办</div></div>
+      <div class="q"><div class="num">5</div><div><b>是否必须对方回信？</b> → 定尾段：公告 / 招募 / 回复问询不用回；建议 / 推荐 / 申请 / 投诉要回</div></div>
+    </div>
+  </div>
+
+  <div class="subpage" id="mk-nine">
+    <div class="blk">
+      <span class="tag orig">Monkey 原版</span>
+      <h3>三分归元：先定元，再选句</h3>
+      <p>主要目的实质涉及哪一元，主体就从哪一元选句：<b>介绍某事 → 是什么</b>（说明介绍）；<b>讲理由 → 为什么</b>（分析利弊）；<b>给建议 → 怎么办</b>（建议意见）。每一元固定 3 句，一共 9 句，就是下面这些。</p>
+    </div>
+    <div class="blk">
+      <span class="tag orig">Monkey 原版</span>
       <h3>① 是什么 · 说明介绍</h3>
-      <div class="sent">it will be held / it is located in (behind) the Main Building (next Sunday).<span class="zh">时间地点：它将于下周日在主楼举行 / 位于主楼（后面）。地点可替换，如 at a rural school</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">we will gather in the Main Building next Sunday and set off to the spot (and please make sure you are available then).<span class="zh">集合出发版：校外活动用这个</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">our staff will be there to provide you with necessary orientation / guidance.<span class="zh">出席人物：工作人员届时提供必要的培训、介绍、引导</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">it is highly recommended to be properly / warmly / plainly dressed for the occasion.<span class="zh">着装要求：得体 / 保暖 / 朴素——按场合三选一</span><button class="copy" aria-label="复制">⧉</button></div>
+      <div class="item"><div class="sent">it will be held / it is located in (behind) the Main Building (next Sunday).<span class="zh">时间地点：它将于下周日在主楼举行 / 位于主楼（后面）。地点可替换，如 at a rural school</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <div class="item"><div class="sent">we will gather in the Main Building next Sunday and set off to the spot (and please make sure you are available then).<span class="zh">集合出发版：校外活动用这个</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <div class="item"><div class="sent">our staff will be there to provide you with necessary orientation / guidance.<span class="zh">出席人物：工作人员届时提供必要的培训、介绍、引导</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <div class="item"><div class="sent">it is highly recommended to be properly / warmly / plainly dressed for the occasion.<span class="zh">着装要求：得体 / 保暖 / 朴素——按场合三选一</span><button class="copy" aria-label="复制">⧉</button></div></div>
     </div>
-    <div class="side orig">
-      <span class="side-tag">Monkey 原版</span>
+    <div class="blk">
+      <span class="tag orig">Monkey 原版</span>
       <h3>② 为什么 · 分析利弊</h3>
-      <div class="sent">has an official award / qualification / recognition from the authority.<span class="zh">权威认可：官方奖项 / 资质 / 认可</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">is awarded with the title of Material / Intangible Cultural Heritage from the United Nations.<span class="zh">升级说法：被联合国授予物质 / 非物质文化遗产称号（推长城、故宫时用）</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">enjoys widespread popularity / a widespread reputation / a widespread concern among students / people / consumers.<span class="zh">群众基础——注意：这句我们改过，popularity 前面不加 a，reputation / concern 才加 a（见升级版页签）</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">I personally find it attractive / interesting / beneficial / necessary (to do sth).<span class="zh">个人喜欢：it 是形式宾语，如 find it interesting to climb the Great Wall</span><button class="copy" aria-label="复制">⧉</button></div>
+      <div class="item"><div class="sent">has an official award / qualification / recognition from the authority.<span class="zh">权威认可：官方奖项 / 资质 / 认可</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <div class="item"><div class="sent">is awarded with the title of Material / Intangible Cultural Heritage from the United Nations.<span class="zh">升级说法：被联合国授予物质 / 非物质文化遗产称号（推长城、故宫时用）</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <div class="item"><div class="sent">enjoys a widespread popularity / a widespread reputation / a widespread concern among students / people / consumers.<span class="zh">群众基础：在学生 / 人们 / 消费者中广受欢迎、有广泛声誉、引起广泛关注</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <div class="item"><div class="sent">I personally find it attractive / interesting / beneficial / necessary (to do sth).<span class="zh">个人喜欢：it 是形式宾语，如 find it interesting to climb the Great Wall</span><button class="copy" aria-label="复制">⧉</button></div></div>
     </div>
-    <div class="side orig">
-      <span class="side-tag">Monkey 原版</span>
+    <div class="blk">
+      <span class="tag orig">Monkey 原版</span>
       <h3>③ 怎么办 · 建议意见</h3>
-      <div class="sent">It's advisable to put things into perspective and establish a correct value about sth primarily.<span class="zh">端正认识：先摆正心态、建立正确价值观</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">you could look for relevant / advanced / international / historical experience in this aspect on Zhihu Community.<span class="zh">实践经验：去知乎找现成经验（范文里 experience 可用复数 experiences）</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">a practical and reasonable plan should be promptly carried out and remain high on your agenda.<span class="zh">知行合一：制定合理可行的计划并优先执行</span><button class="copy" aria-label="复制">⧉</button></div>
+      <div class="item"><div class="sent">It's advisable to put things into perspective and establish a correct value about sth primarily.<span class="zh">端正认识：先摆正心态、建立正确价值观</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <div class="item"><div class="sent">you could look for relevant / advanced / international / historical experience in this aspect on Zhihu Community.<span class="zh">实践经验：去知乎找现成经验（范文里 experience 可用复数 experiences）</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <div class="item"><div class="sent">a practical and reasonable plan should be promptly carried out and remain high on your agenda.<span class="zh">知行合一：制定合理可行的计划并优先执行</span><button class="copy" aria-label="复制">⧉</button></div></div>
       <p class="note">选句口诀：纯题 = 同一元三句全上；杂糅题 = 跨元混填。推荐题没思路时，理由永远按<b>权威 → 群众 → 个人</b>排。</p>
     </div>
   </div>
 
-  <div class="subpage" id="juku-up">
-    <p style="font-size:14.5px;color:var(--ink2);margin:14px 0 4px">模板原句只够保底，这些是实战里验过、能把分数往上抬的句子——优先从这里挑，替换掉菜单里的素句。</p>
-    <div class="side up">
-      <span class="side-tag">我们升级版</span>
-      <h3>修正句</h3>
-      <div class="sent">enjoys widespread popularity among <span class="slot">[人群]</span>.<span class="zh">popularity 去 a 修正：popularity 不可数不能加 a（原版误加，扇贝批改挑出过这个错）；reputation / concern 可数，才保留 a</span><button class="copy" aria-label="复制">⧉</button></div>
+  <div class="subpage" id="mk-frame">
+    <div class="blk">
+      <span class="tag orig">Monkey 原版</span>
+      <h3>首段公式 + 主要目的四选一</h3>
+      <p><span class="en">Dear Xx,</span><br><span class="en">I am writing this letter to</span> ＋ 次要目的（客套）＋ <span class="en">and to</span> ＋ 主要目的（正事）。通知版把第一句换成 <span class="en">This notice is to…</span>，其余不变。</p>
+      <p style="margin-top:10px"><b>主要目的四选一：</b></p>
+      <div class="item"><div class="sent">offer you some <span class="slot">suggestions / information</span> about sth / how to do sth.<span class="zh">① 给建议 / 给信息</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <div class="item"><div class="sent">extend you an invitation to do sth.<span class="zh">② 发邀请</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <div class="item"><div class="sent">recommend you sth.<span class="zh">③ 推荐东西</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <p>④ 以上都不贴 → 直接<b>照抄题干</b>的要求，但<b>必须换人称</b>：<span class="en">him / her → you，your → my</span>。例：题干 <span class="en">thank him, give your advice</span> → 正文 <span class="en">thank you and give you my advice</span>。原样照抄 = 没过脑子，要扣分。</p>
     </div>
-    <div class="bank">
-      <div class="card"><h3>投诉 · 毛病</h3>
-        <div class="sent">it cannot be turned on at all.<span class="zh">根本开不了机——最简单的故障说法</span><button class="copy" aria-label="复制">⧉</button></div>
-        <span class="src">出处：2026-11-25 投诉信实战补丁</span></div>
-      <div class="card"><h3>投诉 · 加细节</h3>
-        <div class="sent">…, although I have tried several times.<span class="zh">接在毛病句后：试了好几次了——一句话拉满真实感</span><button class="copy" aria-label="复制">⧉</button></div>
-        <span class="src">出处：2026-11-25 投诉信实战补丁</span></div>
-      <div class="card"><h3>投诉 · 影响</h3>
-        <div class="sent">it has caused me great inconvenience in my study.<span class="zh">给我造成了很大不便——比 gives me some problems 正式一档</span><button class="copy" aria-label="复制">⧉</button></div>
-        <span class="src">出处：2026-11-25 投诉信实战补丁</span></div>
-      <div class="card"><h3>投诉 · 诉求</h3>
-        <div class="sent">I demand a replacement or a full refund.<span class="zh">换货或全额退款——投诉信的正经诉求说法</span><button class="copy" aria-label="复制">⧉</button></div>
-        <span class="src">出处：2026-11-25 投诉信实战补丁</span></div>
-      <div class="card"><h3>感受 · 负面</h3>
-        <div class="sent">I personally find it disappointing that a brand-new product should fail so soon.<span class="zh">新买的东西这么快就坏，太让人失望</span><button class="copy" aria-label="复制">⧉</button></div>
-        <span class="src">出处：2026-11-25 投诉信实战补丁</span></div>
-      <div class="card"><h3>感受 · 正面</h3>
-        <div class="sent">I was deeply impressed by…<span class="zh">……给我留下了深刻印象——说感受的题开头神器</span><button class="copy" aria-label="复制">⧉</button></div>
-        <span class="src">出处：2026-11-25 实战补丁（感受类）</span></div>
+    <div class="blk">
+      <span class="tag orig">Monkey 原版</span>
+      <h3>主体骨架（28 词，整段照背）</h3>
+      <div class="item"><div class="sent">Regarding <span class="slot">…(sth)</span>, there are several points I would <b>mostly</b> like to mention. <span class="conn">First of all,</span> <span class="fill">论点 1</span>. <span class="conn">What's more,</span> <span class="fill">论点 2</span>. <span class="conn">In addition,</span> <span class="fill">论点 3</span>. For more details, you could refer to the attachment below.<button class="copy" aria-label="复制">⧉</button></div></div>
+      <p class="note">规矩：Regarding 后必须接名词；三个过渡词不许换成 <span class="en">last but not least</span> 之类（它们不分主次）；过渡词后首字母小写；<span class="en">mostly</span> 别丢（四篇范文原文都带）。三坑不够用时，用 <span class="en">and</span> 在第三点里追加第四点。论点从三元 9 句里挑。</p>
+      <p style="margin-top:10px"><button type="button" class="gobtn" data-subjump="mk-nine">去看三元 9 句 →</button></p>
+    </div>
+    <div class="blk">
+      <span class="tag orig">Monkey 原版</span>
+      <h3>尾段 2 选 1 + 落款</h3>
+      <p><b>① 不用回信</b>（告知 / 招募 / 回复问询）：</p>
+      <div class="item"><div class="sent">I would be glad if you found the information / suggestions mentioned above helpful. Should you have any further questions, please feel free to contact me.<span class="zh">提信息用 information，建议用 suggestions；found 是虚拟语气，写 find 也不扣分</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <p><b>② 要回信</b>（投诉 / 申请 / 建议 / 邀请 / 推荐）：</p>
+      <div class="item"><div class="sent">I would appreciate it if you could take my <span class="slot">complaint / application / recommendation / invitation / questions</span> into serious consideration. And I would be much obliged to you for an early and positive reply.<span class="zh">空里按文体填一个</span><button class="copy" aria-label="复制">⧉</button></div></div>
+      <p><b>落款规则：</b>写信 → <span class="en">Yours truly,</span> + 题干指定名，没指定默认 <span class="en">Li Ming</span>（Yours 只有 Y 大写）；通知 → 落<b>机构名 + 日期</b>，不署个人名。</p>
+    </div>
+    <div class="card"><b>判断方法只有一条：</b>看题干里有没有 <span class="en">notice</span> 这个词。有 = 通知；没有 = 写信（letter / email 都按信写）。正文骨架两边完全共用，只差头尾。</div>
+    <div class="vs">
+      <div class="col">
+        <h3>写信 Letter / Email</h3><p class="judge">题干没有 notice 时，一律按信写</p>
+        <table>
+          <tr><td>抬头</td><td><span class="en">Dear Xx,</span> 每词首字母大写 + 逗号</td></tr>
+          <tr><td>首句</td><td><span class="en">I am writing this letter to…</span></td></tr>
+          <tr><td>正文</td><td>主体段骨架 + 三元 9 句，与通知完全共用</td></tr>
+          <tr><td>尾段</td><td>按「要不要回信」二选一</td></tr>
+          <tr><td>落款</td><td><span class="en">Yours truly,<br>Li Ming</span>（右对齐）</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <h3>通知 Notice</h3><p class="judge">题干出现 notice 时才是通知</p>
+        <table>
+          <tr><td>标题</td><td>顶部居中大标题：<span class="en">Notice</span></td></tr>
+          <tr><td>抬头</td><td>没有 Dear，直接进正文</td></tr>
+          <tr><td>首句</td><td><span class="en">This notice is to…</span></td></tr>
+          <tr><td>正文</td><td>主体段骨架 + 三元 9 句，与写信完全共用</td></tr>
+          <tr><td>尾段</td><td>多用尾段①变体，或直接收尾</td></tr>
+          <tr><td>落款</td><td>右下角：发通知的单位 + 日期<br><span class="en">Students' Union<br>June 15, 2024</span>（日期按题干）</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="blk">
+      <span class="tag orig">Monkey 原版</span>
+      <h3>模板细则</h3>
+      <p><b>首段：</b>次要目的只有感谢 / 道歉 / 祝贺这类纯情感目的，题干没有就跳过。主要目的四选一都不贴时照抄题干，<b>必须换人称</b>（him → you，your → my）。</p>
+      <p><b>主体：</b>Regarding 后面必须接名词，别写成光秃秃的 <span class="en">Regarding, there are…</span>；<span class="en">Main Building</span> 两个词都大写，放不进主楼用 <span class="en">behind / beside the Main Building</span>。</p>
+      <p><b>附件句：</b>任何文体都能写，附件可以是照片、名单、资料。</p>
+      <p><b>词数：</b>全文约 100 词，固定骨架约占 50+ 词，真正要填的只有主体段 3 个论点。得分核心是<b>切题</b>，不是辞藻。</p>
+      <p style="margin-top:10px">易错清单全站只放一份，在融合版的自查步里：<button type="button" class="gobtn" data-jumpstep="step5">去看易错清单 →</button></p>
     </div>
   </div>
 
-  <div class="subpage" id="juku-patch">
-    <div class="side up">
-      <span class="side-tag">我们升级版 · 自补</span>
-      <h3>投诉补丁（3 句）</h3>
-      <p class="note">Monkey 原版没有投诉句式，这 3 句是我们自己补的：毛病 → 影响 → 诉求，正好填主体的三个空。</p>
-      <div class="sent">it cannot be turned on at all.<span class="zh">毛病句：根本开不了机（故障说法可换）</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">it has caused me great inconvenience in my study.<span class="zh">影响句：给我造成了很大不便</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">I demand a replacement or a full refund.<span class="zh">诉求句：换货或全额退款，二选一写死</span><button class="copy" aria-label="复制">⧉</button></div>
-    </div>
-    <div class="side up">
-      <span class="side-tag">我们升级版 · 自补</span>
-      <h3>感受补丁（2 句）</h3>
-      <p class="note">说感受的题（2026 那类）用。</p>
-      <div class="sent">I personally find it disappointing that…<span class="zh">负面感受：我个人觉得很失望的是……</span><button class="copy" aria-label="复制">⧉</button></div>
-      <div class="sent">I was deeply impressed by…<span class="zh">正面感受：……给我留下了深刻印象</span><button class="copy" aria-label="复制">⧉</button></div>
+  <div class="subpage" id="mk-samples">
+    <div class="blk">
+      <span class="tag orig">Monkey 原版 · 范文</span>
+      <h3>四篇真题范文，一句话拆清套法</h3>
+      <div class="sample"><div class="yr">2019<br>英一</div><div><b>支教项目回复问询</b> <span class="pill">纯 · 是什么</span><p>主要目的照抄题干（answer your inquiry…）；主体 = 时间地点（held at a rural school）+ 工作人员 orientation + 着装 properly；不需要回信 → 尾段①。全文约 113 词。</p></div></div>
+      <div class="sample"><div class="yr">2017<br>英一</div><div><b>给 Professor Cook 推荐景点</b> <span class="pill">纯 · 为什么</span><p>只推一个长城、把理由写足，不报菜名。主体 = 权威（official award from the United Nations）+ 群众（popularity among Chinese people）+ 个人（find it interesting to climb the Great Wall）。</p></div></div>
+      <div class="sample"><div class="yr">2016<br>英二</div><div><b>回复 Jack：感谢 + 翻译建议</b> <span class="pill">纯 · 怎么办</span><p>次要目的 thank you（题干 him 已换人称）+ 主要目的 give you my advice on translation；主体三句全用怎么办，第三点范文里也用 What's more，且写的是 study plan、experiences 复数。</p></div></div>
+      <div class="sample"><div class="yr">2019<br>英二</div><div><b>给 Professor Smith 筹划辩论会</b> <span class="pill">杂糅 · 为什么×2 + 是什么</span><p>两个主要目的并列照抄题干；主体 = 推荐主题 Didi Taxi（群众关注 + 个人觉得有吸引力）+ 活动安排（held at the Main Building + 工作人员，用 and 拼进第三点）。</p></div></div>
+      <p class="note" style="margin-top:10px"><b>杂糅题规律：</b>同一道题跨了两元就是杂糅题。不慌——三坑按需跨元混填即可，这正是三分归元法比「按类型背模板」强的地方。范文里引用的句子都是片段，原句看这里：</p>
+      <p style="margin-top:8px"><button type="button" class="gobtn" data-subjump="mk-nine">去看三元 9 句原句 →</button></p>
     </div>
   </div>
 </div>
@@ -445,104 +539,6 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
   </div>
 </div>
 
-<!-- ============ 范文拆解 ============ -->
-<div class="page" id="page-fanwen">
-  <div class="sec-head"><h2>范文拆解</h2><p>参考页<br>想深究时再看</p></div>
-  <div class="subbar" data-subbar="fanwen">
-    <button type="button" data-sub="fw-samples" class="on">范文四篇</button>
-    <button type="button" data-sub="fw-vs">写信 vs 通知</button>
-    <button type="button" data-sub="fw-ours">换成我们自己的</button>
-    <button type="button" data-sub="fw-detail">模板详解</button>
-  </div>
-
-  <div class="subpage active" id="fw-samples">
-    <div class="side orig">
-      <span class="side-tag">Monkey 原版 · 范文</span>
-      <h3>四篇真题范文，一句话拆清套法</h3>
-      <div class="sample"><div class="yr">2019<br>英一</div><div><b>支教项目回复问询</b> <span class="pill">纯 · 是什么</span><p>主要目的照抄题干（answer your inquiry…）；主体 = 时间地点（held at a rural school）+ 工作人员 orientation + 着装 properly；不需要回信 → 尾段①。全文约 113 词。</p></div></div>
-      <div class="sample"><div class="yr">2017<br>英一</div><div><b>给 Professor Cook 推荐景点</b> <span class="pill">纯 · 为什么</span><p>只推一个长城、把理由写足，不报菜名。主体 = 权威（official award from the United Nations）+ 群众（popularity among Chinese people）+ 个人（find it interesting to climb the Great Wall）。</p></div></div>
-      <div class="sample"><div class="yr">2016<br>英二</div><div><b>回复 Jack：感谢 + 翻译建议</b> <span class="pill">纯 · 怎么办</span><p>次要目的 thank you（题干 him 已换人称）+ 主要目的 give you my advice on translation；主体三句全用怎么办，第三点范文里也用 What's more，且写的是 study plan、experiences 复数。</p></div></div>
-      <div class="sample"><div class="yr">2019<br>英二</div><div><b>给 Professor Smith 筹划辩论会</b> <span class="pill">杂糅 · 为什么×2 + 是什么</span><p>两个主要目的并列照抄题干；主体 = 推荐主题 Didi Taxi（群众关注 + 个人觉得有吸引力）+ 活动安排（held at the Main Building + 工作人员，用 and 拼进第三点）。</p></div></div>
-      <p class="note" style="margin-top:10px"><b>杂糅题规律：</b>同一道题跨了两元就是杂糅题。不慌——三坑按需跨元混填即可，这正是三分归元法比「按类型背模板」强的地方。</p>
-    </div>
-  </div>
-
-  <div class="subpage" id="fw-vs">
-    <div class="card"><b>判断方法只有一条：</b>看题干里有没有 <span class="en">notice</span> 这个词。有 = 通知；没有 = 写信（letter / email 都按信写）。正文骨架两边完全共用，只差头尾。</div>
-    <div class="vs">
-      <div class="col">
-        <h3>写信 Letter / Email</h3><p class="judge">题干没有 notice 时，一律按信写</p>
-        <table>
-          <tr><td>抬头</td><td><span class="en">Dear Xx,</span> 每词首字母大写 + 逗号</td></tr>
-          <tr><td>首句</td><td><span class="en">I am writing this letter to…</span></td></tr>
-          <tr><td>正文</td><td>主体段骨架 + 三元 9 句，与通知完全共用</td></tr>
-          <tr><td>尾段</td><td>按「要不要回信」二选一</td></tr>
-          <tr><td>落款</td><td><span class="en">Yours truly,<br>Li Ming</span>（右对齐）</td></tr>
-        </table>
-      </div>
-      <div class="col">
-        <h3>通知 Notice</h3><p class="judge">题干出现 notice 时才是通知</p>
-        <table>
-          <tr><td>标题</td><td>顶部居中大标题：<span class="en">Notice</span></td></tr>
-          <tr><td>抬头</td><td>没有 Dear，直接进正文</td></tr>
-          <tr><td>首句</td><td><span class="en">This notice is to…</span></td></tr>
-          <tr><td>正文</td><td>主体段骨架 + 三元 9 句，与写信完全共用</td></tr>
-          <tr><td>尾段</td><td>多用尾段①变体，或直接收尾；升级版要给「下一步」（截止 + 找谁）</td></tr>
-          <tr><td>落款</td><td>右下角：发通知的单位 + 日期<br><span class="en">Students' Union<br>June 15, 2024</span>（日期按题干）</td></tr>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="subpage" id="fw-ours">
-    <div class="side up">
-      <span class="side-tag">我们升级版</span>
-      <h3>换成我们自己的：骨架不动，血肉换成自己的说法</h3>
-      <p><b>固定不改：</b>主体段骨架、三个过渡词、首尾段公式、抬头落款格式——这些是阅卷人眼里的「结构分」，改了反而丢分。<br><b>可以换：</b>骨架里填的<b>具体名词和场景</b>——换成自己熟悉的说法，写起来顺，也不容易和别人撞模板。</p>
-      <table class="cmp">
-        <thead><tr><th style="width:20%">位置</th><th style="width:36%">原版（Monkey）</th><th>我们自己的版</th></tr></thead>
-        <tbody>
-          <tr><td data-l="位置"><b>活动地点</b></td><td data-l="原版" class="en">the Main Building</td><td data-l="我们版"><span class="en">the lecture hall / the school playground / the Students' Activity Center</span><br><span class="note">换成自己学校真实有的地方，更像真事</span></td></tr>
-          <tr><td data-l="位置"><b>找经验的平台</b></td><td data-l="原版" class="en">on Zhihu Community</td><td data-l="我们版"><span class="en">on Bilibili / on online forums / from senior students</span><br><span class="note">知乎用烂了就换；向学长学姐请教更朴素百搭</span></td></tr>
-          <tr><td data-l="位置"><b>万能推荐对象</b></td><td data-l="原版" class="en">The Great Wall</td><td data-l="我们版"><span class="en">The Great Wall（默认保留）/ Forbidden City（备选）</span><br><span class="note">长城一物三用：景点、电影、书都能推，理由现成；想避开撞车就换故宫</span></td></tr>
-          <tr><td data-l="位置"><b>群众对象</b></td><td data-l="原版" class="en">among 人民群众</td><td data-l="我们版"><span class="en">among students / young people / consumers / local citizens</span><br><span class="note">必须随题换：校园题 students，消费题 consumers，城市题 citizens</span></td></tr>
-          <tr><td data-l="位置"><b>着装词</b></td><td data-l="原版" class="en">properly / warmly / plainly dressed</td><td data-l="我们版"><span class="en">正式场合 properly · 冬天户外 warmly · 支教/劳动 plainly</span><br><span class="note">三选一本来就是留给我们的口子，按场景挑</span></td></tr>
-          <tr><td data-l="位置"><b>计划的名称</b></td><td data-l="原版" class="en">a practical and reasonable plan</td><td data-l="我们版"><span class="en">a practical and reasonable study plan / training plan / reading plan</span><br><span class="note">加上具体领域，立刻不像背的（范文里 Jack 那篇就写 study plan）</span></td></tr>
-          <tr><td data-l="位置"><b>工作人员</b></td><td data-l="原版" class="en">our staff … orientation / guidance</td><td data-l="我们版"><span class="en">our teachers / volunteers / organizers will be there…</span><br><span class="note">主语按活动换：比赛 organizers，支教 volunteers</span></td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top:12px"><b>换的边界：</b>只能换名词和场景，<b>句式结构一个词都不动</b>。能把 <span class="en">Zhihu Community</span> 换成 <span class="en">Bilibili</span>，但不能改写 <span class="en">look for … experience in this aspect on …</span> 的句式——那就不是模板了。</p>
-    </div>
-  </div>
-
-  <div class="subpage" id="fw-detail">
-    <div class="side orig">
-      <span class="side-tag">Monkey 原版</span>
-      <h3>模板细则（写作文五步里没展开的）</h3>
-      <p><b>首段：</b>次要目的只有感谢 / 道歉 / 祝贺这类纯情感目的，题干没有就跳过。主要目的四选一都不贴时照抄题干，<b>必须换人称</b>（him → you，your → my）。</p>
-      <p><b>主体：</b>Regarding 后面必须接名词，别写成光秃秃的 <span class="en">Regarding, there are…</span>；<span class="en">Main Building</span> 两个词都大写，放不进主楼用 <span class="en">behind / beside the Main Building</span>。</p>
-      <p><b>附件句：</b>原版说法是任何文体都能写（附件可以是照片、名单、资料）——但我们升级版加了方向规则：只有「我给对方细节」时才用，见写作文第 03 步。</p>
-      <p><b>词数：</b>全文约 100 词，固定骨架约占 50+ 词，真正要填的只有主体段 3 个论点。得分核心是<b>切题</b>，不是辞藻。</p>
-    </div>
-    <div class="side orig">
-      <span class="side-tag">Monkey 原版</span>
-      <h3>易错清单 · 完整版</h3>
-      <ul class="check">
-        <li><b>suggestions 加 s，information 不加 s</b>——建议不止一条所以可数；information 不可数，永远单数。</li>
-        <li><b>抬头每个词首字母大写 + 逗号</b>：<span class="en">Dear International Student Volunteer,</span> 别只大写第一个词。</li>
-        <li><b>落款 Yours 只有 Y 大写</b>：<span class="en">Yours truly,</span> 后跟逗号；署名默认 <span class="en">Li Ming</span>。</li>
-        <li><b>过渡词后首字母小写</b>：<span class="en">First of all, it…</span> 不要写成 <span class="en">First of all, It…</span></li>
-        <li><b>过渡词不许自创</b>：别把 <span class="en">In addition</span> 换成 <span class="en">last but not least</span>，三点不分主次。</li>
-        <li><b>照抄题干要换人称</b>：<span class="en">him → you，your → my</span>，原样抄 = 没审题。</li>
-        <li><b>Main Building 两个词都大写</b>；放不进主楼用 <span class="en">behind / beside the Main Building</span>。</li>
-        <li><b>attachment 纸质信也能用</b>：附件可以是照片、名单、资料。</li>
-        <li><b>Regarding 后必须跟名词</b>，别写成光秃秃的 <span class="en">Regarding, there are…</span></li>
-        <li><b>通知别写 Dear 和 Yours truly</b>：标题 Notice 居中，结尾右下角写单位 + 日期。</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
 <!-- ============ 拼文练习 ============ -->
 <div class="page" id="page-builder">
   <div class="sec-head"><h2>拼文练习</h2><p>选一选<br>骨架自动拼好</p></div>
@@ -568,21 +564,20 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
     <select id="b-tail"><option value="no">① 不需要回信（信息有用就好）</option><option value="yes">② 需要回信（请认真考虑）</option></select>
     <div id="preview" class="en"></div>
     <p style="font-size:13px;color:var(--ink2)">占位处换成题目里的具体内容，就是一篇完整的约 100 词小作文。</p>
-    <button class="btn" id="b-copy">⧉ 复制全文</button> <span id="b-done" style="font-size:13.5px;color:var(--red-ink);font-weight:700"></span>
+    <button class="btn" id="b-copy">⧉ 复制全文</button> <span id="b-done" style="font-size:13.5px;font-weight:700"></span>
   </div>
 </div>
 
-<footer>模板来源：Monkey 考研英语「三分归元法」（强化作文第三讲）。灰底 = Monkey 原版；朱红 = 我们升级版（实战修正与自补）。未覆盖的道歉 / 问询 / 求职信，老师 12 月串讲后再补——求职信的本质已剧透：就是「为什么选我」（证书 = 权威、口碑 = 群众、喜欢 = 个人）。</footer>
+<footer>模板来源：Monkey 考研英语「三分归元法」（强化作文第三讲）。「我们升级版」页是融合后的一套完整模板，每条标了出处（原版保留 / 我们修正 / 我们新补）；「Monkey 原版」页只放老师原版，供对照查阅。未覆盖的道歉 / 问询 / 求职信，老师 12 月串讲后再补——求职信的本质已剧透：就是「为什么选我」（证书 = 权威、口碑 = 群众、喜欢 = 个人）。</footer>
 </div>
 
 <script>
 (function(){
-  // copy buttons
+  // copy buttons (strip tags, translations and usage notes)
   document.querySelectorAll('.sent .copy').forEach(function(btn){
     btn.addEventListener('click',function(){
       var box=btn.parentElement.cloneNode(true);
-      var b=box.querySelector('.copy'); if(b) b.remove();
-      var zh=box.querySelector('.zh'); if(zh) zh.remove();
+      ['.copy','.zh','.use'].forEach(function(sel){var el=box.querySelector(sel); if(el) el.remove();});
       var txt=box.textContent.replace(/\s+/g,' ').trim();
       if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(function(){
         btn.textContent='✓'; btn.classList.add('done');
@@ -598,21 +593,21 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
     window.scrollTo(0,0);
   }
   tabs.forEach(function(b){b.addEventListener('click',function(){showPage(b.getAttribute('data-page'));});});
-  document.querySelectorAll('[data-jump]').forEach(function(a){
-    a.addEventListener('click',function(e){e.preventDefault();showPage(a.getAttribute('data-jump'));});
-  });
   // steps (paginated, no long scroll)
   var stepBtns=document.querySelectorAll('#stepnav button');
   function showStep(id){
     document.querySelectorAll('.steppane').forEach(function(p){p.classList.toggle('active',p.id===id);});
     stepBtns.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-step')===id);});
-    var write=document.getElementById('page-write');
-    if(!write.classList.contains('active')) showPage('page-write');
+    var up=document.getElementById('page-up');
+    if(!up.classList.contains('active')) showPage('page-up');
     window.scrollTo(0,0);
   }
   stepBtns.forEach(function(b){b.addEventListener('click',function(){showStep(b.getAttribute('data-step'));});});
   document.querySelectorAll('[data-goto]').forEach(function(b){
     b.addEventListener('click',function(){showStep(b.getAttribute('data-goto'));});
+  });
+  document.querySelectorAll('[data-jumpstep]').forEach(function(b){
+    b.addEventListener('click',function(){showStep(b.getAttribute('data-jumpstep'));});
   });
   // generic sub-bars
   document.querySelectorAll('[data-subbar]').forEach(function(bar){
@@ -624,6 +619,16 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
       btns.forEach(function(x){x.classList.toggle('on',x===b);});
       window.scrollTo(0,0);
     });});
+  });
+  // jump to a sub-page inside the same page
+  document.querySelectorAll('[data-subjump]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var id=b.getAttribute('data-subjump');
+      var page=b.closest('.page');
+      page.querySelectorAll('.subpage').forEach(function(p){p.classList.toggle('active',p.id===id);});
+      page.querySelectorAll('[data-subbar] button').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-sub')===id);});
+      window.scrollTo(0,0);
+    });
   });
   // builder
   var YUAN={
